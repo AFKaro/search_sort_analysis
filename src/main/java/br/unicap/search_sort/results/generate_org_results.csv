@@ -1,0 +1,11 @@
+Task,TimeExecution,VectorSize,Parallel
+Generate Organization,549.3681,1000,false
+Generate Organization,24.6338,1000,true
+Generate Organization,307.0187,10000,false
+Generate Organization,82.5386,10000,true
+Generate Organization,960.1799,100000,false
+Generate Organization,326.6732,100000,true
+Generate Organization,7292.16,1000000,false
+Generate Organization,3134.9186,1000000,true
+Generate Organization,70574.4339,10000000,false
+Generate Organization,31460.6079,10000000,true

@@ -1,0 +1,21 @@
+Task,Algorithm,VectorSize,TimeExecution,NumberThreads,Status
+sort,QUICK_SORT,1000,1.7521,null,Ordered Users
+sort,QUICK_SORT,1000,0.2636,7,Ordered Users
+sort,BUBBLE_SORT,1000,0.6767,null,Ordered Users
+sort,BUBBLE_SORT,1000,0.1607,7,Ordered Users
+sort,QUICK_SORT,10000,7.805,null,Ordered Users
+sort,QUICK_SORT,10000,1.3774,7,Ordered Users
+sort,BUBBLE_SORT,10000,1.8184,null,Ordered Users
+sort,BUBBLE_SORT,10000,1.3796,7,Ordered Users
+sort,QUICK_SORT,100000,85.2933,null,Ordered Users
+sort,QUICK_SORT,100000,4.4091,7,Ordered Users
+sort,BUBBLE_SORT,100000,8.6349,null,Ordered Users
+sort,BUBBLE_SORT,100000,2.9472,7,Ordered Users
+sort,QUICK_SORT,1000000,416.1382,null,Ordered Users
+sort,QUICK_SORT,1000000,43.5892,7,Ordered Users
+sort,BUBBLE_SORT,1000000,26.3101,null,Ordered Users
+sort,BUBBLE_SORT,1000000,29.4767,7,Ordered Users
+sort,QUICK_SORT,10000000,6927.0735,null,Ordered Users
+sort,QUICK_SORT,10000000,523.0871,7,Ordered Users
+sort,BUBBLE_SORT,10000000,417.883,null,Ordered Users
+sort,BUBBLE_SORT,10000000,417.8968,7,Ordered Users
