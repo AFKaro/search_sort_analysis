@@ -40,12 +40,8 @@ public class SearchService {
     public ResponseSearchSort searchUserNotThread(Organization org, Configuration configuration, User user) throws InterruptedException {
         long start;
 
-        executorService = Executors.newSingleThreadExecutor();
         start = System.nanoTime();
         User userFound = searchAlgorithms.search(user, org.getUserList(), configuration.getAlgorithmEnum());
-
-        executorService.shutdown();
-        executorService.awaitTermination(1, TimeUnit.HOURS);
 
         Double timeExecution = (System.nanoTime() - start) / 1e6;
         String status = userFound != null ? "User Found" : "User Not Found";
@@ -63,21 +59,21 @@ public class SearchService {
         ThreadGroup threadGroup = new ThreadGroup("Group Thread");
 
         start = System.nanoTime();
-        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newFixedThreadPool(configuration.getNumberThreads());
 
         IntStream.range(0, configuration.getNumberThreads()).forEach(i ->
-                executorService.submit(new Thread(threadGroup, () -> {
+                executorService.execute(new Thread(threadGroup, () -> {
 
                     User u = searchAlgorithms.search(user, parts.get(i), configuration.getAlgorithmEnum());
 
                     if (!Objects.isNull(u)) {
                         userFound[0] = u;
                         threadGroup.interrupt();
+
                     }
 
                 }))
         );
-
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.HOURS);
 

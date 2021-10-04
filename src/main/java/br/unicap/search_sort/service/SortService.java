@@ -10,10 +10,7 @@ import br.unicap.search_sort.functions.sort.QuickSort;
 import br.unicap.search_sort.functions.sort.QuickSortMutliThreading;
 import br.unicap.search_sort.util.ArrayUtil;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
 
 
 public class SortService {
@@ -27,7 +24,6 @@ public class SortService {
             Integer numThreads;
             long start;
 
-            ExecutorService executorService = Executors.newSingleThreadExecutor();
             start = System.nanoTime();
 
             if(thread) {
@@ -35,9 +31,6 @@ public class SortService {
             } else{
                 numThreads = sortUsersNotThread(org.getUserList(), algorithmEnum);
             }
-
-            executorService.shutdown();
-            executorService.awaitTermination(1, TimeUnit.HOURS);
 
             Double timeExecution = (System.nanoTime() - start) / 1e6;
             String status = ArrayUtil.verifyData(org.getUserList()) ? "Ordered Users" : "Unordered Users";

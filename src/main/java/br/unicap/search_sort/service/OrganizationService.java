@@ -7,23 +7,18 @@ import br.unicap.search_sort.util.DataUtil;
 import br.unicap.search_sort.util.PrinterUtil;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
 public class OrganizationService {
 
-    private ExecutorService executorService;
 
-    public ResponseGenerate createOrganization(String name, Integer numberUsers, boolean parallel) throws InterruptedException {
+    public ResponseGenerate createOrganization(String name, Integer numberUsers, boolean parallel) {
         PrinterUtil.print("Creating and populating organization " + (parallel?"with parallel..." : "..."));
         List<User> users;
         long start;
 
-        executorService = Executors.newSingleThreadExecutor();
         start = System.nanoTime();
         if(parallel) {
             users = IntStream.range(0, numberUsers)
@@ -35,8 +30,6 @@ public class OrganizationService {
                     .mapToObj(i -> new User(DataUtil.generateUUID(), DataUtil.generateName()))
                     .collect(Collectors.toList());
         }
-        executorService.shutdown();
-        executorService.awaitTermination(1, TimeUnit.HOURS);
 
         Double timeExecution = (System.nanoTime() - start) / 1e6;
 
